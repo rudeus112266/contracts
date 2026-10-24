@@ -60,7 +60,11 @@ strip-wasm: build-wasm
 fmt:
 	cargo fmt --all
 
+# Lint shell scripts (including the shared lib, if present)
+shellcheck:
+	shellcheck -x scripts/*.sh $(wildcard scripts/lib/*.sh)
+
 clean:
 	cargo clean
 
-.PHONY: default all test build build-wasm optimize measure-sizes check-sizes profile-wasm strip-wasm fmt clean
+.PHONY: default all test build build-wasm optimize measure-sizes check-sizes profile-wasm strip-wasm fmt shellcheck clean

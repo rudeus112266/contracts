@@ -108,6 +108,16 @@ jobs:
       - name: Check formatting
         run: cargo fmt --all --check
 
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run shellcheck
+        run: make shellcheck
+
   check:
     name: Cargo Check
     runs-on: ubuntu-latest
