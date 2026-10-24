@@ -453,3 +453,15 @@ jobs:
             done
           done
           exit $status
+
+  cargo-deny:
+    name: Cargo Deny
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run cargo deny check
+        uses: EmbarkStudios/cargo-deny-action@v2
+        with:
+          command: check
