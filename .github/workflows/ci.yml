@@ -181,8 +181,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cargo-build-target-
 
-      - name: Run Clippy
-        run: cargo clippy --all-targets --all-features --workspace -- -D warnings
+      - name: Run Clippy (default features)
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+
+      - name: Run Clippy (all features)
+        run: cargo clippy --workspace --all-targets --all-features --locked -- -D warnings
 
   test:
     name: Test Suite

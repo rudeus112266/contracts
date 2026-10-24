@@ -60,7 +60,12 @@ strip-wasm: build-wasm
 fmt:
 	cargo fmt --all
 
+# Same clippy invocations as the Clippy job in .github/workflows/ci.yml
+lint:
+	cargo clippy --workspace --all-targets --locked -- -D warnings
+	cargo clippy --workspace --all-targets --all-features --locked -- -D warnings
+
 clean:
 	cargo clean
 
-.PHONY: default all test build build-wasm optimize measure-sizes check-sizes profile-wasm strip-wasm fmt clean
+.PHONY: default all test build build-wasm optimize measure-sizes check-sizes profile-wasm strip-wasm fmt lint clean
